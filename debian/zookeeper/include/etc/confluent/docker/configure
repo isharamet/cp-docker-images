@@ -27,6 +27,8 @@ dub path /etc/kafka/ writable
 # myid is required for clusters
 if [[ -n "${ZOOKEEPER_SERVERS-}" ]]
 then
+  ZOOKEEPER_SERVER_ID=$(echo "${ZOOKEEPER_SERVER_ID}" | awk -F'-' '{print $2}')
+  ZOOKEEPER_SERVER_ID=$(($ZOOKEEPER_SERVER_ID + 1))
   dub ensure ZOOKEEPER_SERVER_ID
   export ZOOKEEPER_INIT_LIMIT=${ZOOKEEPER_INIT_LIMIT:-"10"}
   export ZOOKEEPER_SYNC_LIMIT=${ZOOKEEPER_SYNC_LIMIT:-"5"}

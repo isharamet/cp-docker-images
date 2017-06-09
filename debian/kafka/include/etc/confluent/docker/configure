@@ -22,6 +22,12 @@ set -o nounset \
 dub ensure KAFKA_ZOOKEEPER_CONNECT
 dub ensure KAFKA_ADVERTISED_LISTENERS
 
+if [[ -n "${KAFKA_BROKER_ID-}" ]]
+then
+  KAFKA_BROKER_ID=$(echo "${KAFKA_BROKER_ID}" | awk -F'-' '{print $2}')
+  KAFKA_BROKER_ID=$(($KAFKA_BROKER_ID + 1))
+fi
+
 # By default, LISTENERS is derived from ADVERTISED_LISTENERS by replacing
 # hosts with 0.0.0.0. This is good default as it ensures that the broker
 # process listens on all ports.

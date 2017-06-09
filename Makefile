@@ -1,13 +1,13 @@
 BUILD_NUMBER := 6
 CP_VERSION := 3.2.1
 VERSION := ${CP_VERSION}-${BUILD_NUMBER}
-COMPONENTS := base zookeeper kafka kafka-rest schema-registry kafka-connect-base kafka-connect enterprise-control-center kafkacat enterprise-replicator enterprise-kafka kafka-streams-examples
+COMPONENTS := base zookeeper kafka kafka-rest schema-registry # kafka-connect-base kafka-connect enterprise-control-center kafkacat enterprise-replicator enterprise-kafka kafka-streams-examples
 COMMIT_ID := $(shell git rev-parse --short HEAD)
 MYSQL_DRIVER_VERSION := 5.1.39
 
 CONFLUENT_DEB_REPO := http://packages.confluent.io
 APT_ALLOW_UNAUTHENTICATED := false
-REPOSITORY := confluentinc
+REPOSITORY := isharamet
 
 # You can override vars like REPOSITORY in a local.make file
 -include local.make
